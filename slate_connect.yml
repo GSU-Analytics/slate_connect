@@ -1,0 +1,16 @@
+# slate_connect.yml
+
+# To install this environment, use the following command:
+# conda env create -f slate_connect.yaml
+# After creating the environment, activate it with:
+# conda activate slate_connect
+
+name: slate_connect
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - sqlalchemy
+  - keyring
+  - pandas
+  - pyodbc
