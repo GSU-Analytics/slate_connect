@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "slate_connect"
+version = "0.2.0"
+description = "A secure and convenient interface for connecting to and querying a Slate CRM database using SQLAlchemy."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Isaac Kerson", email = "ikerson@gsu.edu"}
+]
+keywords = ["slate", "crm", "database", "connection", "pandas", "sqlalchemy"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pandas",
+    "keyring",
+    "sqlalchemy",
+    "pyodbc",
+]
+
+[project.urls]
+Repository = "https://github.com/GSU-Analytics/slate_connect.git"

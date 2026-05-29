@@ -36,16 +36,48 @@ Verify the driver is registered by opening **ODBC Data Sources (64-bit)** from t
 
 ## Installation Instructions
 
-### Remote Installation
+### Using uv (Recommended)
 
-This approach installs the package directly from the remote repository, which is useful for users who need to use the package without contributing to its development.
+[uv](https://docs.astral.sh/uv/) is the recommended tool for managing the environment and installing this package. Install it with:
 
-1. **Create a Conda Environment, Install Package, and Activate Environment**:
-   Copy the `slate_connect.yml` file to your local machine.
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+#### Remote Installation
+
+Install directly from GitHub into a uv-managed environment:
+
+```bash
+uv pip install git+https://github.com/GSU-Analytics/slate_connect.git
+```
+
+#### Update
+
+```bash
+uv pip install --upgrade git+https://github.com/GSU-Analytics/slate_connect.git
+```
+
+#### Local Development
+
+```bash
+git clone https://github.com/GSU-Analytics/slate_connect.git
+cd slate_connect
+uv sync
+uv pip install -e .
+```
+
+---
+
+### Using Conda
+
+A `slate_connect.yml` file is provided for users who prefer Conda.
+
+#### Remote Installation
+
+1. Copy the `slate_connect.yml` file to your local machine.
 
    ```yaml
-   # slate_connect.yml
-
    name: slate_connect
    channels:
      - defaults
@@ -59,47 +91,23 @@ This approach installs the package directly from the remote repository, which is
        - pyodbc
    ```
 
-   Install the package by following these steps: 
-   1. Ensure Conda is installed by typing `conda -v` in the command line.
-   2. Create a new Conda environment using the `slate_connect.yml` file with the following command:
-      ```cmd
-      conda env create -f slate_connect.yml
-      conda activate slate_connect
-      ```
+2. Create and activate the environment:
 
-2. **Install the Package in an Existing Environment**:
-   ```cmd
+   ```bash
+   conda env create -f slate_connect.yml
+   conda activate slate_connect
    pip install git+https://github.com/GSU-Analytics/slate_connect.git
    ```
 
-3. **Update the Package in an Existing Environment**:
-   ```cmd
-   pip install --upgrade git+https://github.com/GSU-Analytics/slate_connect.git
-   ```
+#### Local Development
 
-### Local Installation
-
-For local installation, especially if you plan to contribute to the package or need a development setup:
-
-1. **Clone the Repository**:
-   ```cmd
-   git clone https://github.com/GSU-Analytics/slate_connect.git
-   cd slate_connect
-   ```
-
-2. **Create and Activate the Conda Environment**:
-   Use the `slate_connect.yml` file to set up an environment with all necessary dependencies installed via Conda. Navigate to the directory containing `slate_connect.yml`, or specify the full path to the file.
-
-   ```cmd
-   conda env create -f slate_connect.yml
-   conda activate slate_connect
-   ```
-
-3. **Install the Package Locally**:
-   This step installs the current local version of the package into the Conda environment.
-   ```cmd
-   pip install .
-   ```
+```bash
+git clone https://github.com/GSU-Analytics/slate_connect.git
+cd slate_connect
+conda env create -f slate_connect.yml
+conda activate slate_connect
+pip install -e .
+```
 
 ## Usage
 
