@@ -13,4 +13,6 @@ dependencies:
   - sqlalchemy
   - keyring
   - pandas
-  - pyodbc
+  - pip
+  - pip:
+    - pyodbc

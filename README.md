@@ -3,6 +3,37 @@
 ## Description
 A secure and convenient interface for connecting to and querying a Slate CRM database using SQLAlchemy and pandas.
 
+## Prerequisites
+
+### ODBC Driver 17 for SQL Server
+
+This package requires Microsoft's ODBC Driver 17 for SQL Server to be installed at the system level before creating the conda environment. This is a system driver, not a Python package, and must be installed separately.
+
+#### macOS
+
+Install via Homebrew:
+
+```bash
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+HOMEBREW_ACCEPT_EULA=Y brew install msodbcsql17
+```
+
+Verify the driver is registered:
+
+```bash
+odbcinst -q -d -n "ODBC Driver 17 for SQL Server"
+```
+
+#### Windows
+
+Download and run the installer from Microsoft:
+
+1. Go to [Microsoft ODBC Driver for SQL Server](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server)
+2. Download **ODBC Driver 17 for SQL Server** for Windows.
+3. Run the installer and follow the prompts.
+
+Verify the driver is registered by opening **ODBC Data Sources (64-bit)** from the Start menu and checking the **Drivers** tab.
+
 ## Installation Instructions
 
 ### Remote Installation
@@ -10,27 +41,29 @@ A secure and convenient interface for connecting to and querying a Slate CRM dat
 This approach installs the package directly from the remote repository, which is useful for users who need to use the package without contributing to its development.
 
 1. **Create a Conda Environment, Install Package, and Activate Environment**:
-   Copy the `slate_connect.yaml` file to your local machine.
+   Copy the `slate_connect.yml` file to your local machine.
 
    ```yaml
-   # slate_connect.yaml
+   # slate_connect.yml
 
    name: slate_connect
    channels:
-   - defaults
+     - defaults
    dependencies:
-   - python=3.10
-   - sqlalchemy
-   - keyring
-   - pandas
-   - pyodbc
+     - python=3.10
+     - sqlalchemy
+     - keyring
+     - pandas
+     - pip
+     - pip:
+       - pyodbc
    ```
 
    Install the package by following these steps: 
    1. Ensure Conda is installed by typing `conda -v` in the command line.
-   2. Create a new Conda environment using the `slate_connect.yaml` file with the following command:
+   2. Create a new Conda environment using the `slate_connect.yml` file with the following command:
       ```cmd
-      conda env create -f slate_connect.yaml
+      conda env create -f slate_connect.yml
       conda activate slate_connect
       ```
 
@@ -55,10 +88,10 @@ For local installation, especially if you plan to contribute to the package or n
    ```
 
 2. **Create and Activate the Conda Environment**:
-   Use the `slate_connect.yaml` file to set up an environment with all necessary dependencies installed via Conda. Navigate to the directory containing `slate_connect.yaml`, or specify the full path to the file.
+   Use the `slate_connect.yml` file to set up an environment with all necessary dependencies installed via Conda. Navigate to the directory containing `slate_connect.yml`, or specify the full path to the file.
 
    ```cmd
-   conda env create -f slate_connect.yaml
+   conda env create -f slate_connect.yml
    conda activate slate_connect
    ```
 
